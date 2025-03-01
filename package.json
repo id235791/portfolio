@@ -2,9 +2,10 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://id235791.github.io/",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
     "lint": "next lint"
   },
