@@ -1,0 +1,31 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write # GitHub Pages 배포를 위해 필요
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies 📦
+        run: |
+          yarn install
+
+      - name: Build Project 🔧
+        run: |
+          yarn build
+          touch ./out/.nojekyll # GitHub Pages에서 _next 폴더 문제 방지
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages # 배포할 브랜치
+          folder: out # Next.js가 빌드한 정적 파일이 들어 있는 폴더
