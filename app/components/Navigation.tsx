@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
-  const toggleMenu = (event: MouseEvent) => {
+  const toggleMenu = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
     setIsOpen(!isOpen);
   };
