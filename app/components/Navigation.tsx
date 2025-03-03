@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
-  const toggleMenu = (event: any) => {
+  const toggleMenu = (event: Event) => {
     event.preventDefault();
     setIsOpen(!isOpen);
   };

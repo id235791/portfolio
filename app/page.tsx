@@ -13,7 +13,9 @@ export default function Home() {
         ></Image>
       </div>
       <div className="self-center text-center">
-        <p className="font-semibold text-center text-3xl mb-4">Hello I'm</p>
+        <p className="font-semibold text-center text-3xl mb-4">
+          Hello I&apos;m
+        </p>
         <h1 className="text-center text-5xl">Dasol Jung</h1>
         <p className="font-semibold ">Instructor for Training Developers</p>
         <div className="flex justify-center mt-4 gap-4">
