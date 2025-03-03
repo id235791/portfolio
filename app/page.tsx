@@ -1,3 +1,3 @@
 export default function Home() {
-  return <div> Test 문자열 </div>;
+  return <div className="text-3xl"> Test 문자열 </div>;
 }
