@@ -65,3 +65,22 @@ a,
 .mobile-nav {
   @apply block p-2.5 text-center text-2xl text-black no-underline transition-all duration-300 ease-in-out;
 }
+section {
+  padding-top: 4vh;
+  height: 96vh;
+  margin: 0 10rem;
+  box-sizing: border-box;
+  min-height: fit-content;
+}
+/* .animate-slideToRight {
+  animation: slideToRight 1s linear forwards;
+}
+
+@keyframes slideToRight {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+} */
