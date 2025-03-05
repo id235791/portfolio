@@ -87,5 +87,5 @@ section {
   @apply font-semibold text-center mb-1.5;
 }
 .about-box li > div:first-child {
-  @apply text-center text-gray-800 flex justify-between;
+  @apply text-center text-teal-600 flex justify-between;
 }

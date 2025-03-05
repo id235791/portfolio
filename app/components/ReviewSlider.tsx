@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import Image from "next/image";
 import review01 from "@/app/assets/images/review01.jpg";
 import review02 from "@/app/assets/images/review02.jpg";
+import review03 from "@/app/assets/images/review03.jpg";
 
 const ReviewSlider = () => {
   const settings = {
@@ -35,7 +36,7 @@ const ReviewSlider = () => {
         </div>
         <div className="!inline-flex justify-center items-center relative my-auto h-full">
           <Image
-            src={review01} // 실제 경로에 맞게 수정하세요
+            src={review03} // 실제 경로에 맞게 수정하세요
             alt="Slide 3"
             className="object-cover rounded-sm"
           />
