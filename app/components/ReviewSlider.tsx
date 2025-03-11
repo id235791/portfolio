@@ -30,7 +30,7 @@ const ReviewSlider = () => {
   //확대판
   // const zoomPanel = useRef<HTMLDivElement | null>(null);
   // const [isOnPanel, setOnPanel] = useState<boolean>(false);
-  const [imgSrc, setImgSrc] = useState<StaticImageData>(review01);
+  // const [imgSrc, setImgSrc] = useState<StaticImageData>(review01);
 
   //슬라이더 설정
   const settings = {
@@ -64,7 +64,7 @@ const ReviewSlider = () => {
     //   scannerRef.current.classList.add("opacity-100");
     //   scannerRef.current.classList.remove("opacity-0");
     // }
-    setImgSrc(imgSrc);
+    // setImgSrc(imgSrc);
   };
 
   // const onMouseMove = (event: React.MouseEvent<HTMLElement>) => {
@@ -173,6 +173,7 @@ const ReviewSlider = () => {
             >
               <div className="relative w-fit h-fit">
                 <Image
+                  key={index}
                   src={imgSrc} // 실제 경로에 맞게 수정하세요
                   alt="Slide 1"
                   className="rounded-sm cursor-pointer"
