@@ -78,9 +78,7 @@ export default function Home() {
                     </li>
                     <li>
                       <div>
-                        <div className="font-semibold text-teal-600">
-                          한양대학교 ERICA
-                        </div>
+                        <div className="font-semibold">한양대학교 ERICA</div>
                         <div>중퇴(2학년 수료)</div>
                       </div>
                       <div className="text-gray-500 text-xs ml-4">
@@ -104,7 +102,7 @@ export default function Home() {
                   <ul className="flex flex-col justify-around h-full">
                     <li>
                       <div>
-                        <div className="font-semibold text-teal-600">
+                        <div className="font-semibold">
                           케이에이치정보교육원
                         </div>
                         <div>전임강사(1년 9개월)</div>
@@ -115,7 +113,7 @@ export default function Home() {
                     </li>
                     <li>
                       <div>
-                        <div className="font-semibold text-teal-600">
+                        <div className="font-semibold">
                           코리아정보보안아이티아카데미
                         </div>
                         <div>전임강사(2년 7개월)</div>
@@ -126,7 +124,7 @@ export default function Home() {
                     </li>
                     <li>
                       <div>
-                        <div className="font-semibold text-teal-600">
+                        <div className="font-semibold">
                           코리아정보보안아이티아카데미
                         </div>
                         <div>조교(9개월)</div>
@@ -142,10 +140,15 @@ export default function Home() {
             <div className="w-full h-[34vh] mt-6 text-gray-600 flex gap-8 pb-2">
               <div className="w-6/12 break-keep text-left text-sm">
                 <p>
-                  주로 담당해서 강의했던 과정은 Spring Boot와 React.js를 이용한
-                  풀 스택 개발자 양성과정입니다. 강단에 서 있던 기간은 5년차에
-                  접어들었지만, 여전히 신입 개발자라는 겸손한 마음으로 성실하고
-                  유능한 개발자가 되겠습니다.
+                  주로 담당해서 강의했던 과정은{" "}
+                  <span className="text-teal-700 font-bold">Spring Boot</span>와
+                  <span className="text-teal-700 font-bold"> React.js</span>를
+                  이용한 풀 스택 개발자 양성과정입니다. 강단에 서 있던 기간은
+                  5년차에 접어들었지만, 여전히 신입 개발자라는 겸손한 마음으로
+                  성실하고 유능한 개발자가 되겠습니다. 우측은 함께했던
+                  수강생분들이 작성해주신 정성스러운
+                  <span className="text-teal-700 font-bold"> 후기</span>입니다.
+                  한 번 둘러봐주시면 감사하겠습니다.
                 </p>
                 <ul className="flex gap-4 mt-6">
                   <li className="w-1/4 grow flex justify-center items-center p-2 rounded-4xl shadow-teal-400 shadow-sm">
@@ -153,7 +156,7 @@ export default function Home() {
                     <Image
                       alt="check icon"
                       src={checkIcon}
-                      className="inline w-6"
+                      className="inline w-6 ml-1"
                     ></Image>
                   </li>
                   <li className="w-1/4 grow flex justify-center items-center p-2 rounded-4xl shadow-teal-400 shadow-sm">
@@ -161,7 +164,7 @@ export default function Home() {
                     <Image
                       alt="check icon"
                       src={checkIcon}
-                      className="inline w-6"
+                      className="inline w-6 ml-1"
                     ></Image>
                   </li>
                   <li className="w-1/4 grow flex justify-center items-center p-2 rounded-4xl shadow-teal-400 shadow-sm">
@@ -169,7 +172,7 @@ export default function Home() {
                     <Image
                       alt="check icon"
                       src={checkIcon}
-                      className="inline w-6"
+                      className="inline w-6 ml-1"
                     ></Image>
                   </li>
                   <li className="w-1/4 grow flex justify-center items-center p-2 rounded-4xl shadow-teal-400 shadow-sm">
@@ -177,7 +180,8 @@ export default function Home() {
                     <Image
                       alt="check icon"
                       src={checkIcon}
-                      className="inline w-6"
+                      className="inline w-6 ml-1
+                      "
                     ></Image>
                   </li>
                 </ul>
@@ -204,14 +208,13 @@ export default function Home() {
                     이름을 검색해보세요
                   </span>
                 </div>
-                <div className="w-full h-full flex grow overflow-hidden justify-center items-center">
-                  <ReviewSlider></ReviewSlider>
-                </div>
+                <ReviewSlider></ReviewSlider>
               </div>
             </div>
           </div>
         </div>
       </section>
+      <section className="h-40"></section>
     </>
   );
 }
