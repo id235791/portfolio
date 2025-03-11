@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import Slider from "react-slick";
-import Image, { StaticImageData } from "next/image";
+// import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import review01 from "@/app/assets/images/review01.jpg";
 import review02 from "@/app/assets/images/review02.jpg";
 import review03 from "@/app/assets/images/review03.jpg";
