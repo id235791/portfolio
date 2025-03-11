@@ -30,7 +30,7 @@ const ReviewSlider = () => {
   //확대판
   // const zoomPanel = useRef<HTMLDivElement | null>(null);
   // const [isOnPanel, setOnPanel] = useState<boolean>(false);
-  // const [imgSrc, setImgSrc] = useState<StaticImageData>(review01);
+  const [imgSrc, setImgSrc] = useState<StaticImageData>(review01);
 
   //슬라이더 설정
   const settings = {
@@ -64,91 +64,91 @@ const ReviewSlider = () => {
     //   scannerRef.current.classList.add("opacity-100");
     //   scannerRef.current.classList.remove("opacity-0");
     // }
-    // setImgSrc(imgSrc);
+    setImgSrc(imgSrc);
   };
 
-  const onMouseMove = (event: React.MouseEvent<HTMLElement>) => {
-    // const scanner = scannerRef.current;
-    // const boundary = { top: 0, bottom: 0 };
-    // let flag = false;
-    // if (imageRect && sliderRect.current) {
-    //   //이미지가 컨테이너보다 큰 경우(컨테이너가 바운더리)
-    //   if (imageRect.height > sliderRect.current.height) {
-    //     boundary.top = 0;
-    //     boundary.bottom = sliderRect.current.height - scannerHeight - 2;
-    //     flag = false;
-    //   } else {
-    //     boundary.top = (sliderRect.current.height - imageRect.height) / 2;
-    //     boundary.bottom =
-    //       (sliderRect.current.height + imageRect.height) / 2 -
-    //       scannerHeight -
-    //       2;
-    //     flag = true;
-    //   }
-    //   // 마우스 커서 Scanner 가운데에 위치하도록 설정
-    //   let scannerPosLeft = event.clientX;
-    //   let scannerPosTop = event.clientY;
-    //   if (scanner) {
-    //     if (scanner.parentElement) {
-    //       scannerPosLeft =
-    //         event.clientX -
-    //         scanner.parentElement?.getBoundingClientRect().x -
-    //         scannerWidth / 2;
-    //       scannerPosTop =
-    //         event.clientY -
-    //         scanner.parentElement?.getBoundingClientRect().y -
-    //         scannerHeight / 2;
-    //     }
-    //   }
-    //   if (scannerPosLeft < 0) {
-    //     scannerPosLeft = 0;
-    //   } else if (scannerPosLeft > imageRect.width - scannerWidth) {
-    //     scannerPosLeft = imageRect.width - scannerWidth;
-    //   }
-    //   if (scannerPosTop < boundary.top) {
-    //     scannerPosTop = boundary.top;
-    //   } else if (scannerPosTop > boundary.bottom) {
-    //     scannerPosTop = boundary.bottom;
-    //   }
-    //   if (zoomPanel.current) {
-    //     if (!isOnPanel) {
-    //       //확대판 on
-    //       zoomPanel.current.classList.add("opacity-100");
-    //       zoomPanel.current.classList.remove("opacity-0");
-    //       // zoomPanel.current.style.left = `0px`;
-    //       // zoomPanel.current.style.top = boundary.top + `px`;
-    //       zoomPanel.current.style.width = "200px";
-    //       zoomPanel.current.style.height = "200px";
-    //       zoomPanel.current.style.top = "0px";
-    //       zoomPanel.current.style.left = "-200px";
-    //       // console.log(scannerPosTop - boundary.top);
-    //       setOnPanel(!isOnPanel);
-    //     } else {
-    //     }
-    //     zoomPanel.current.style.background = `url(${imgSrc.src}) no-repeat`;
-    //     zoomPanel.current.style.backgroundSize = "2400%";
-    //     zoomPanel.current.style.backgroundPositionX =
-    //       -scannerPosLeft * 9.8 + "px";
-    //     zoomPanel.current.style.backgroundPositionY =
-    //       -scannerPosTop + boundary.top + "px";
-    //   }
-    //   setScannerPosition({
-    //     left: scannerPosLeft,
-    //     top: scannerPosTop,
-    //   });
-    // }
-  };
-  const onMouseLeave = (event: React.MouseEvent<HTMLElement>) => {
-    // if (zoomPanel.current) {
-    //   zoomPanel.current.classList.remove("opacity-100");
-    //   zoomPanel.current.classList.add("opacity-0");
-    // }
-    // if (scannerRef.current) {
-    //   scannerRef.current.classList.add("opacity-0");
-    //   scannerRef.current.classList.remove("opacity-100");
-    // }
-    // setOnPanel(!isOnPanel);
-  };
+  // const onMouseMove = (event: React.MouseEvent<HTMLElement>) => {
+  // const scanner = scannerRef.current;
+  // const boundary = { top: 0, bottom: 0 };
+  // let flag = false;
+  // if (imageRect && sliderRect.current) {
+  //   //이미지가 컨테이너보다 큰 경우(컨테이너가 바운더리)
+  //   if (imageRect.height > sliderRect.current.height) {
+  //     boundary.top = 0;
+  //     boundary.bottom = sliderRect.current.height - scannerHeight - 2;
+  //     flag = false;
+  //   } else {
+  //     boundary.top = (sliderRect.current.height - imageRect.height) / 2;
+  //     boundary.bottom =
+  //       (sliderRect.current.height + imageRect.height) / 2 -
+  //       scannerHeight -
+  //       2;
+  //     flag = true;
+  //   }
+  //   // 마우스 커서 Scanner 가운데에 위치하도록 설정
+  //   let scannerPosLeft = event.clientX;
+  //   let scannerPosTop = event.clientY;
+  //   if (scanner) {
+  //     if (scanner.parentElement) {
+  //       scannerPosLeft =
+  //         event.clientX -
+  //         scanner.parentElement?.getBoundingClientRect().x -
+  //         scannerWidth / 2;
+  //       scannerPosTop =
+  //         event.clientY -
+  //         scanner.parentElement?.getBoundingClientRect().y -
+  //         scannerHeight / 2;
+  //     }
+  //   }
+  //   if (scannerPosLeft < 0) {
+  //     scannerPosLeft = 0;
+  //   } else if (scannerPosLeft > imageRect.width - scannerWidth) {
+  //     scannerPosLeft = imageRect.width - scannerWidth;
+  //   }
+  //   if (scannerPosTop < boundary.top) {
+  //     scannerPosTop = boundary.top;
+  //   } else if (scannerPosTop > boundary.bottom) {
+  //     scannerPosTop = boundary.bottom;
+  //   }
+  //   if (zoomPanel.current) {
+  //     if (!isOnPanel) {
+  //       //확대판 on
+  //       zoomPanel.current.classList.add("opacity-100");
+  //       zoomPanel.current.classList.remove("opacity-0");
+  //       // zoomPanel.current.style.left = `0px`;
+  //       // zoomPanel.current.style.top = boundary.top + `px`;
+  //       zoomPanel.current.style.width = "200px";
+  //       zoomPanel.current.style.height = "200px";
+  //       zoomPanel.current.style.top = "0px";
+  //       zoomPanel.current.style.left = "-200px";
+  //       // console.log(scannerPosTop - boundary.top);
+  //       setOnPanel(!isOnPanel);
+  //     } else {
+  //     }
+  //     zoomPanel.current.style.background = `url(${imgSrc.src}) no-repeat`;
+  //     zoomPanel.current.style.backgroundSize = "2400%";
+  //     zoomPanel.current.style.backgroundPositionX =
+  //       -scannerPosLeft * 9.8 + "px";
+  //     zoomPanel.current.style.backgroundPositionY =
+  //       -scannerPosTop + boundary.top + "px";
+  //   }
+  //   setScannerPosition({
+  //     left: scannerPosLeft,
+  //     top: scannerPosTop,
+  //   });
+  // }
+  // };
+  // const onMouseLeave = (event: React.MouseEvent<HTMLElement>) => {
+  // if (zoomPanel.current) {
+  //   zoomPanel.current.classList.remove("opacity-100");
+  //   zoomPanel.current.classList.add("opacity-0");
+  // }
+  // if (scannerRef.current) {
+  //   scannerRef.current.classList.add("opacity-0");
+  //   scannerRef.current.classList.remove("opacity-100");
+  // }
+  // setOnPanel(!isOnPanel);
+  // };
   return (
     <>
       <div
@@ -185,8 +185,8 @@ const ReviewSlider = () => {
                   onMouseEnter={(event) => {
                     onMouseEnter(event, imgSrc);
                   }}
-                  onMouseMove={onMouseMove}
-                  onMouseLeave={onMouseLeave}
+                  // onMouseMove={onMouseMove}
+                  // onMouseLeave={onMouseLeave}
                   onClick={() => {
                     if (imageRect) {
                       const test = window.open(
