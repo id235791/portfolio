@@ -49,8 +49,8 @@ const ReviewSlider = () => {
 
   //마우스 들어갔을 때(이미지Rect 설정, 스캐너 작동, 보고 있는 상황에서의 sliderRect 설정)
   const onMouseEnter = (
-    event: React.MouseEvent<HTMLImageElement>,
-    imgSrc: StaticImageData
+    event: React.MouseEvent<HTMLImageElement>
+    // imgSrc: StaticImageData
   ) => {
     // //보고있는 이미지의 Rect
     const imageRect = event.currentTarget.getBoundingClientRect();
@@ -163,6 +163,7 @@ const ReviewSlider = () => {
         <Slider {...settings} className="h-full">
           {[review01, review02, review03].map((imgSrc, index) => (
             <div
+              key={index}
               className={`!inline-flex ${
                 imageRects.current[index] &&
                 sliderRect.current &&
@@ -173,7 +174,6 @@ const ReviewSlider = () => {
             >
               <div className="relative w-fit h-fit">
                 <Image
-                  key={index}
                   src={imgSrc} // 실제 경로에 맞게 수정하세요
                   alt="Slide 1"
                   className="rounded-sm cursor-pointer"
@@ -184,7 +184,8 @@ const ReviewSlider = () => {
                     }
                   }}
                   onMouseEnter={(event) => {
-                    onMouseEnter(event, imgSrc);
+                    // onMouseEnter(event, imgSrc);
+                    onMouseEnter(event);
                   }}
                   // onMouseMove={onMouseMove}
                   // onMouseLeave={onMouseLeave}
