@@ -116,9 +116,9 @@ export const projects: Project[] = [
     slug: "duckzip",
     title: "duckzip (덕집)",
     summary:
-      "애니메이션 캐릭터 팬 커뮤니티. 8인 팀의 PM으로 첫 인프라 세팅부터 4단계 환경 분리 배포, GitHub Actions 협업 자동화, 공통 API 기반까지 직접 구축했습니다.",
+      "애니메이션 캐릭터 팬 커뮤니티. 4인 팀의 PM으로 첫 인프라 세팅부터 4단계 환경 분리 배포, GitHub Actions 협업 자동화, 공통 API 기반까지 직접 구축했습니다.",
     period: "2026.04 - 진행중",
-    organization: "사이드 프로젝트 · 8인 팀",
+    organization: "사이드 프로젝트 · 4인 팀",
     role: "PM · 아키텍처 · 인프라/DevOps",
     contribution: "50%",
     tech: [
@@ -135,7 +135,7 @@ export const projects: Project[] = [
     ],
     accent: "from-amber-400 via-orange-500 to-rose-500",
     background:
-      "duckzip(덕집)은 좋아하는 작품과 캐릭터를 중심으로 모이는 팬 커뮤니티입니다. 작품 게시판, 캐릭터 투표, 이상형 월드컵, 굿즈·콜라보 일정, 1:1 상담 채팅 등을 제공합니다. 8명이 함께 개발하는 프로젝트에서 PM을 맡아 저장소와 모노레포 구조를 처음 만드는 것부터 환경별 인프라, 배포 파이프라인, 팀 협업 자동화, 모든 API가 거쳐 가는 공통 기반까지 개발 환경 전체를 직접 구축했습니다. 저장소 전체 커밋의 약 40%를 작성했습니다.",
+      "duckzip(덕집)은 좋아하는 작품과 캐릭터를 중심으로 모이는 팬 커뮤니티입니다. 작품 게시판, 캐릭터 투표, 이상형 월드컵, 굿즈·콜라보 일정, 1:1 상담 채팅 등을 제공합니다. 4명이 함께 개발하는 프로젝트에서 PM을 맡아 저장소와 모노레포 구조를 처음 만드는 것부터 환경별 인프라, 배포 파이프라인, 팀 협업 자동화, 모든 API가 거쳐 가는 공통 기반까지 개발 환경 전체를 직접 구축했습니다.",
     keyWork: [
       "인프라 초기 세팅: Vercel(웹), Supabase(DB·인증·Realtime), Cloudflare R2(파일 스토리지)를 연동하고 환경변수 체계와 .env.example 정비",
       "local / dev / preview / prod 4단계 환경 설계와 브랜치별 자동 배포(preview, main만 빌드)",
@@ -157,7 +157,7 @@ export const projects: Project[] = [
       },
       {
         problem:
-          "8명이 각자 feature 브랜치에서 작업하다 보니 main과의 차이가 금방 벌어져 충돌이 커졌고, 보호해야 할 main/dev 브랜치에 직접 작업하는 실수도 생길 수 있었습니다.",
+          "팀원들이 각자 feature 브랜치에서 작업하다 보니 main과의 차이가 금방 벌어져 충돌이 커졌고, 보호해야 할 main/dev 브랜치에 직접 작업하는 실수도 생길 수 있었습니다.",
         solution:
           "GitHub Actions로 main이 갱신될 때마다 dev, preview, 모든 feature/* 브랜치에 자동 merge하고, 충돌이 나면 merge를 되돌린 뒤 해결 방법과 함께 Discord로 알리게 했습니다. PR이 열리면 커밋 목록과 테스트 체크리스트를 Discord로 보냈고, Cloudflare가 요청을 차단하는 문제는 curl 요청과 User-Agent 지정으로 해결했습니다. Claude Code 훅으로 main/dev 직접 수정을 막고, 세션을 시작할 때 main보다 뒤처진 커밋 수를 알려주도록 했습니다.",
       },
@@ -195,7 +195,7 @@ export const projects: Project[] = [
     results: [
       "첫 인프라 세팅부터 운영 배포까지 전 과정을 직접 구축하고 서비스 운영 중",
       "4단계 환경을 무료 플랜 안에서 분리하고 브랜치별 자동 배포 구성",
-      "GitHub Actions와 Discord 알림, Claude Code 훅으로 8인 팀의 브랜치·PR 흐름 자동화",
+      "GitHub Actions와 Discord 알림, Claude Code 훅으로 4인 팀의 브랜치·PR 흐름 자동화",
       "JWT 인증, 중복 요청 방지, 공통 에러 처리 등 모든 API가 공유하는 공통 기반 제공",
       "인증 요청당 DB 왕복 50% 감소",
       "README 아키텍처 설계도, 온보딩 순서, DB 접근 가이드 등 신규 개발자 문서 정비",
