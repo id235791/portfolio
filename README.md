@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 정다솔 포트폴리오
 
-## Getting Started
+Next.js(App Router) + TypeScript + Tailwind CSS + Framer Motion으로 만든 개발자 포트폴리오입니다.
+정적 사이트로 빌드해 GitHub Pages(`https://id235791.github.io/portfolio/`)에 배포합니다.
 
-First, run the development server:
+## 실행
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000/portfolio/
+npm run build   # out/ 폴더에 정적 사이트 생성
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 콘텐츠 수정
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+화면에 보이는 내용은 모두 `src/data/`에 모여 있어서, 컴포넌트를 건드리지 않고 데이터만 고치면 됩니다.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| 파일 | 내용 |
+| --- | --- |
+| `src/data/profile.ts` | 이름, 헤드라인, 소개 문단, 성과 수치, 연락처, 메뉴 |
+| `src/data/skills.ts` | 기술 스택 |
+| `src/data/projects.ts` | 대표 프로젝트(상세 페이지 자동 생성)와 기타 프로젝트 |
+| `src/data/experience.ts` | 경력, 학력, 자격증 |
 
-## Learn More
+- 프로필 사진: `public/images/profile.jpg` 파일을 교체하면 됩니다.
+- 대표 프로젝트를 추가하면 `/projects/[slug]/` 상세 페이지가 빌드 시 자동으로 만들어집니다.
 
-To learn more about Next.js, take a look at the following resources:
+## 배포
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. 이 프로젝트를 `https://github.com/id235791/portfolio` 저장소에 push 합니다.
+   - 하위 경로(`/portfolio`) 설정은 `src/config/site.ts`의 `BASE_PATH`에서 관리합니다.
+2. 저장소 Settings > Pages > Source를 **GitHub Actions**로 바꿉니다.
+3. 이후 `main` 브랜치에 push 할 때마다 `.github/workflows/deploy.yml`이 자동으로 빌드·배포합니다.
