@@ -9,12 +9,13 @@ export const experiences: ExperienceItem[] = [
     type: "계약직 · 웹개발자",
     title: "SaaS - 기간계 시스템 연동 개발",
     bullets: [
-      "신세계인터내셔날 정보보안 취약점 대응: 연동 API의 토큰 기반 보안 인증 백엔드 개발",
+      "신세계인터내셔날 Zendesk · ECP · MBS 3중 연동 게이트웨이 정보보안 취약점 대응: 3개 모듈의 MBS 호출을 고정 인증키에서 토큰 발급·캐싱·자동 재발급 방식으로 전환",
+      "38일간 멈춰 있던 스케줄러 장애 원인(HTTP 타임아웃 미설정)을 찾아 전 모듈에 타임아웃 적용",
       "LG전자 Zendesk Private App 고도화: 증상 기반 CallCode 추천으로 상담 입력 UX·조회 로직 변경",
       "기간계 신규 시스템(N-GSFS) 전환 2회 대응: 7월 아시아 8개 법인, 10월 중동·아프리카 11개 법인(73개국)·인도네시아",
       "일정 기반 자동 전환, 전환 RUNBOOK·점검 스크립트 정리, Claude Code를 활용한 레거시 분석과 유지보수 효율 개선",
     ],
-    tech: ["Spring Framework", "PostgreSQL", "JavaScript", "jQuery", "Zendesk"],
+    tech: ["Spring Boot", "Oracle", "JavaScript", "jQuery", "Zendesk"],
   },
   {
     organization: "아이디어정보기술",
