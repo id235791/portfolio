@@ -8,7 +8,7 @@ export default function NotFound() {
       <p className="mt-4 text-muted">찾으시는 페이지가 없어요.</p>
       <Link
         href="/"
-        className="mt-8 rounded-full border border-border px-5 py-2.5 text-sm transition-colors hover:bg-white/[0.06]"
+        className="mt-8 rounded-full border border-border px-5 py-2.5 text-sm transition-colors hover:bg-foreground/[0.06]"
       >
         메인으로 돌아가기
       </Link>

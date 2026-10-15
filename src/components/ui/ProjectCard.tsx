@@ -17,7 +17,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
   const rotateY = useSpring(0, { stiffness: 200, damping: 20 });
 
   // 커서 위치를 중심으로 퍼지는 원형 하이라이트
-  const glow = useMotionTemplate`radial-gradient(420px circle at calc(${px} * 100%) calc(${py} * 100%), rgba(255,255,255,0.08), transparent 60%)`;
+  const glow = useMotionTemplate`radial-gradient(420px circle at calc(${px} * 100%) calc(${py} * 100%), rgba(168,85,247,0.08), transparent 60%)`;
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -69,7 +69,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
                 <TechBadge key={t} name={t} />
               ))}
             </div>
-            <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-fuchsia-300">
+            <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-fuchsia-600">
               자세히 보기
               <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
             </span>

@@ -44,7 +44,7 @@ export default function About() {
           {/* 프로필 사진. 사진이 없으면 이니셜 플레이스홀더를 보여준다. */}
           <Reveal>
             <div className="relative mx-auto aspect-[4/5] w-full max-w-[280px]">
-              <div className="absolute -inset-1 rounded-[2rem] bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-400 opacity-60 blur-lg" />
+              <div className="absolute -inset-1 rounded-[2rem] bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-400 opacity-40 blur-lg" />
               <div className="relative h-full overflow-hidden rounded-[2rem] border border-border bg-surface-strong">
                 {profile.photo ? (
                   <Image

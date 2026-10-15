@@ -54,7 +54,7 @@ export default function Skills() {
                       viewport={{ once: true }}
                       transition={{ delay: gi * 0.1 + ii * 0.04 + 0.2 }}
                       whileHover={{ y: -3 }}
-                      className="cursor-default rounded-xl border border-border bg-white/[0.03] px-3.5 py-2 text-sm transition-colors hover:border-white/20 hover:bg-white/[0.07]"
+                      className="cursor-default rounded-xl border border-border bg-foreground/[0.03] px-3.5 py-2 text-sm transition-colors hover:border-foreground/20 hover:bg-foreground/[0.07]"
                     >
                       {item}
                     </motion.li>

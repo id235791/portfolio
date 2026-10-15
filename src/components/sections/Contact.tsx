@@ -23,11 +23,11 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative scroll-mt-20 overflow-hidden py-28 sm:py-36">
-      <div className="pointer-events-none absolute bottom-0 left-1/2 h-[30rem] w-[50rem] -translate-x-1/2 translate-y-1/2 rounded-full bg-fuchsia-600/20 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-0 left-1/2 h-[30rem] w-[50rem] -translate-x-1/2 translate-y-1/2 rounded-full bg-fuchsia-300/30 blur-3xl" />
 
       <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
         <Reveal>
-          <p className="mb-3 font-mono text-sm tracking-widest text-fuchsia-400 uppercase">05 / Contact</p>
+          <p className="mb-3 font-mono text-sm tracking-widest text-fuchsia-600 uppercase">05 / Contact</p>
           <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
             함께 <span className="text-gradient">일할 이야기</span>를 나눠요
           </h2>
@@ -41,7 +41,7 @@ export default function Contact() {
             className="group relative mt-10 inline-flex items-center gap-3 rounded-full border border-border bg-surface px-6 py-4 font-mono text-sm transition-colors hover:border-fuchsia-500/50 sm:text-base"
           >
             {profile.email}
-            <span className="relative inline-flex h-6 min-w-14 items-center justify-center overflow-hidden rounded-full bg-white/10 px-2 text-xs">
+            <span className="relative inline-flex h-6 min-w-14 items-center justify-center overflow-hidden rounded-full bg-foreground/10 px-2 text-xs">
               <AnimatePresence mode="wait" initial={false}>
                 <motion.span
                   key={copied ? "copied" : "copy"}
@@ -49,7 +49,7 @@ export default function Contact() {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -12, opacity: 0 }}
                   transition={{ duration: 0.2 }}
-                  className={copied ? "text-emerald-300" : "text-muted"}
+                  className={copied ? "text-emerald-600" : "text-muted"}
                 >
                   {copied ? "복사됨" : "복사"}
                 </motion.span>
@@ -68,7 +68,7 @@ export default function Contact() {
                     href={link.href}
                     target={external ? "_blank" : undefined}
                     rel={external ? "noopener noreferrer" : undefined}
-                    className="group flex h-full flex-col items-center gap-1 rounded-2xl border border-border bg-surface/60 px-4 py-5 transition-all hover:-translate-y-1 hover:border-white/20"
+                    className="group flex h-full flex-col items-center gap-1 rounded-2xl border border-border bg-surface/60 px-4 py-5 transition-all hover:-translate-y-1 hover:border-foreground/20"
                   >
                     <span className="inline-flex items-center gap-1 font-mono text-xs text-muted uppercase">
                       {link.label}

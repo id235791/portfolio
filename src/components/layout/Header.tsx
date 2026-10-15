@@ -76,7 +76,7 @@ export default function Header() {
                 {activeId === item.id && (
                   <motion.span
                     layoutId="nav-active"
-                    className="absolute inset-0 -z-10 rounded-full bg-white/[0.07]"
+                    className="absolute inset-0 -z-10 rounded-full bg-foreground/[0.07]"
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
                 )}
@@ -111,7 +111,7 @@ export default function Header() {
               <Link
                 href={`/#${item.id}`}
                 onClick={() => setMenuOpen(false)}
-                className="block rounded-xl px-4 py-3 text-sm text-muted hover:bg-white/5 hover:text-foreground"
+                className="block rounded-xl px-4 py-3 text-sm text-muted hover:bg-foreground/5 hover:text-foreground"
               >
                 {item.label}
               </Link>

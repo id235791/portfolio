@@ -1,16 +1,19 @@
 @import "tailwindcss";
 
 /*
-  색상 토큰. 사이트는 다크 테마를 기본으로 한다.
+  색상 토큰. 사이트는 밝은(라이트) 테마를 기본으로 한다.
+  배경은 순백 대신 아주 옅은 회청색을 깔고, 카드(surface)를 흰색으로 띄워 구분한다.
+  컴포넌트에서 반투명 면/테두리는 bg-foreground/[0.04] 처럼 글자색 기준으로 만들어서,
+  여기 토큰만 바꾸면 테마 전체가 따라 바뀐다.
   Tailwind 클래스에서 bg-background, text-muted 처럼 바로 사용할 수 있도록 @theme에 연결한다.
 */
 :root {
-  --background: #07070c;
-  --surface: #0f0f17;
-  --surface-strong: #161622;
-  --border: rgba(255, 255, 255, 0.08);
-  --foreground: #ededf2;
-  --muted: #9a9aad;
+  --background: #f7f8fc;
+  --surface: #ffffff;
+  --surface-strong: #eef0f7;
+  --border: rgba(15, 23, 42, 0.1);
+  --foreground: #1b1d2e;
+  --muted: #5d6178;
 }
 
 @theme inline {
@@ -26,7 +29,7 @@
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
@@ -39,21 +42,21 @@ body {
 }
 
 ::selection {
-  background: rgba(168, 85, 247, 0.4);
+  background: rgba(168, 85, 247, 0.25);
 }
 
 /* 배경에 은은하게 깔리는 격자 무늬. 가장자리로 갈수록 흐려지게 마스크 처리 */
 .bg-grid {
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(15, 23, 42, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
 }
 
 /* 텍스트에 흐르는 그라데이션 효과 */
 .text-gradient {
-  background: linear-gradient(90deg, #c084fc, #f472b6, #22d3ee, #c084fc);
+  background: linear-gradient(90deg, #7c3aed, #db2777, #0891b2, #7c3aed);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;

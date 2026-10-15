@@ -13,7 +13,7 @@ export default function Hero() {
   // 마우스를 따라다니는 배경 조명 위치
   const mouseX = useMotionValue(-1000);
   const mouseY = useMotionValue(-1000);
-  const spotlight = useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(168,85,247,0.15), transparent 70%)`;
+  const spotlight = useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(168,85,247,0.1), transparent 70%)`;
 
   function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -37,13 +37,13 @@ export default function Hero() {
     >
       {/* 배경 레이어: 격자 + 떠다니는 빛 덩어리 + 마우스 조명 */}
       <div className="bg-grid pointer-events-none absolute inset-0" />
-      <div className="animate-blob pointer-events-none absolute -top-40 -left-32 h-[28rem] w-[28rem] rounded-full bg-violet-600/30 blur-3xl" />
+      <div className="animate-blob pointer-events-none absolute -top-40 -left-32 h-[28rem] w-[28rem] rounded-full bg-violet-300/40 blur-3xl" />
       <div
-        className="animate-blob pointer-events-none absolute top-1/3 -right-40 h-[26rem] w-[26rem] rounded-full bg-fuchsia-500/20 blur-3xl"
+        className="animate-blob pointer-events-none absolute top-1/3 -right-40 h-[26rem] w-[26rem] rounded-full bg-fuchsia-300/30 blur-3xl"
         style={{ animationDelay: "-6s" }}
       />
       <div
-        className="animate-blob pointer-events-none absolute -bottom-40 left-1/3 h-[24rem] w-[24rem] rounded-full bg-cyan-500/20 blur-3xl"
+        className="animate-blob pointer-events-none absolute -bottom-40 left-1/3 h-[24rem] w-[24rem] rounded-full bg-cyan-300/30 blur-3xl"
         style={{ animationDelay: "-12s" }}
       />
       <motion.div className="pointer-events-none absolute inset-0" style={{ background: spotlight }} />
@@ -53,7 +53,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-white/[0.03] px-4 py-1.5 font-mono text-xs text-muted"
+          className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-foreground/[0.03] px-4 py-1.5 font-mono text-xs text-muted"
         >
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
@@ -113,7 +113,7 @@ export default function Hero() {
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center rounded-full border border-border bg-white/[0.03] px-6 py-3 text-sm font-semibold transition-colors hover:bg-white/[0.08]"
+            className="inline-flex items-center rounded-full border border-border bg-foreground/[0.03] px-6 py-3 text-sm font-semibold transition-colors hover:bg-foreground/[0.08]"
           >
             연락하기
           </a>

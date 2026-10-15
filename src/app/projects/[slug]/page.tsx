@@ -80,7 +80,7 @@ export default async function ProjectDetailPage(props: PageProps<"/projects/[slu
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-full border border-border bg-white/[0.04] px-4 py-2 text-sm transition-colors hover:bg-white/[0.08]"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-border bg-foreground/[0.04] px-4 py-2 text-sm transition-colors hover:bg-foreground/[0.08]"
                     >
                       {link.label}
                       <ExternalLinkIcon />
@@ -96,7 +96,7 @@ export default async function ProjectDetailPage(props: PageProps<"/projects/[slu
           {/* 배경 */}
           <section>
             <Reveal>
-              <h2 className="mb-5 font-mono text-sm tracking-widest text-fuchsia-400 uppercase">Background</h2>
+              <h2 className="mb-5 font-mono text-sm tracking-widest text-fuchsia-600 uppercase">Background</h2>
               <p className="text-lg leading-relaxed text-foreground/85">{project.background}</p>
             </Reveal>
           </section>
@@ -105,7 +105,7 @@ export default async function ProjectDetailPage(props: PageProps<"/projects/[slu
           {project.keyWork && project.keyWork.length > 0 && (
             <section>
               <Reveal>
-                <h2 className="mb-6 font-mono text-sm tracking-widest text-fuchsia-400 uppercase">Key Work</h2>
+                <h2 className="mb-6 font-mono text-sm tracking-widest text-fuchsia-600 uppercase">Key Work</h2>
               </Reveal>
               <ul className="grid gap-3 sm:grid-cols-2">
                 {project.keyWork.map((work, i) => (
@@ -125,7 +125,7 @@ export default async function ProjectDetailPage(props: PageProps<"/projects/[slu
           {/* 문제 -> 해결 */}
           <section>
             <Reveal>
-              <h2 className="mb-8 font-mono text-sm tracking-widest text-fuchsia-400 uppercase">Problem &amp; Solution</h2>
+              <h2 className="mb-8 font-mono text-sm tracking-widest text-fuchsia-600 uppercase">Problem &amp; Solution</h2>
             </Reveal>
             <ol className="space-y-6">
               {project.challenges.map((c, i) => (
@@ -133,14 +133,14 @@ export default async function ProjectDetailPage(props: PageProps<"/projects/[slu
                   <Reveal delay={i * 0.05}>
                     <div className="grid overflow-hidden rounded-3xl border border-border md:grid-cols-2">
                       <div className="bg-surface p-6 sm:p-7">
-                        <p className="mb-3 inline-flex items-center gap-2 font-mono text-xs text-rose-300 uppercase">
+                        <p className="mb-3 inline-flex items-center gap-2 font-mono text-xs text-rose-600 uppercase">
                           <span className="h-1.5 w-1.5 rounded-full bg-rose-400" />
                           Problem {String(i + 1).padStart(2, "0")}
                         </p>
                         <p className="text-sm leading-relaxed text-foreground/80 sm:text-base">{c.problem}</p>
                       </div>
                       <div className="border-t border-border bg-surface-strong p-6 sm:p-7 md:border-t-0 md:border-l">
-                        <p className="mb-3 inline-flex items-center gap-2 font-mono text-xs text-emerald-300 uppercase">
+                        <p className="mb-3 inline-flex items-center gap-2 font-mono text-xs text-emerald-600 uppercase">
                           <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
                           Solution
                         </p>
@@ -157,11 +157,11 @@ export default async function ProjectDetailPage(props: PageProps<"/projects/[slu
           <section className="grid gap-6 md:grid-cols-2">
             <Reveal className="h-full">
               <div className="h-full rounded-3xl border border-border bg-surface p-6 sm:p-8">
-                <h2 className="mb-5 font-mono text-sm tracking-widest text-fuchsia-400 uppercase">Results</h2>
+                <h2 className="mb-5 font-mono text-sm tracking-widest text-fuchsia-600 uppercase">Results</h2>
                 <ul className="space-y-3 text-sm leading-relaxed text-foreground/85">
                   {project.results.map((r) => (
                     <li key={r} className="flex gap-3">
-                      <span className="mt-0.5 text-emerald-400">&#10003;</span>
+                      <span className="mt-0.5 text-emerald-600">&#10003;</span>
                       {r}
                     </li>
                   ))}
@@ -170,11 +170,11 @@ export default async function ProjectDetailPage(props: PageProps<"/projects/[slu
             </Reveal>
             <Reveal delay={0.1} className="h-full">
               <div className="h-full rounded-3xl border border-border bg-surface p-6 sm:p-8">
-                <h2 className="mb-5 font-mono text-sm tracking-widest text-fuchsia-400 uppercase">Learnings</h2>
+                <h2 className="mb-5 font-mono text-sm tracking-widest text-fuchsia-600 uppercase">Learnings</h2>
                 <ul className="space-y-3 text-sm leading-relaxed text-foreground/85">
                   {project.learnings.map((l) => (
                     <li key={l} className="flex gap-3">
-                      <span className="mt-0.5 text-cyan-300">&rarr;</span>
+                      <span className="mt-0.5 text-cyan-700">&rarr;</span>
                       {l}
                     </li>
                   ))}
@@ -187,7 +187,7 @@ export default async function ProjectDetailPage(props: PageProps<"/projects/[slu
           <Reveal>
             <Link
               href={`/projects/${next.slug}/`}
-              className="group relative block overflow-hidden rounded-3xl border border-border bg-surface p-8 transition-colors hover:border-white/20"
+              className="group relative block overflow-hidden rounded-3xl border border-border bg-surface p-8 transition-colors hover:border-foreground/20"
             >
               <div className={`pointer-events-none absolute inset-0 bg-gradient-to-r ${next.accent} opacity-0 transition-opacity duration-500 group-hover:opacity-15`} />
               <p className="relative font-mono text-xs text-muted uppercase">Next Project</p>
