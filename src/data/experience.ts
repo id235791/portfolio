@@ -5,20 +5,23 @@ export const experiences: ExperienceItem[] = [
   {
     organization: "지에스네오텍(주)",
     period: "2026.02 - 재직중",
+    kind: "work",
     type: "계약직 · 웹개발자",
     title: "SaaS - 기간계 시스템 연동 개발",
     bullets: [
       "신세계인터내셔날 정보보안 취약점 대응: 연동 API의 토큰 기반 보안 인증 백엔드 개발",
-      "LG전자 Zendesk Private App 고도화: 데이터 전송 구조 설계 및 Payload 변환 기능 개발",
-      "기간계 시스템 이관에 따른 신규 연동 방식 설계, Claude Code를 활용한 유지보수 효율 개선",
+      "LG전자 Zendesk Private App 고도화: 증상 기반 CallCode 추천으로 상담 입력 UX·조회 로직 변경",
+      "기간계 신규 시스템(N-GSFS) 전환 2회 대응: 7월 아시아 8개 법인, 10월 중동·아프리카 11개 법인(73개국)·인도네시아",
+      "일정 기반 자동 전환, 전환 RUNBOOK·점검 스크립트 정리, Claude Code를 활용한 레거시 분석과 유지보수 효율 개선",
     ],
-    tech: ["Spring Framework", "PostgreSQL", "JavaScript", "Zendesk"],
+    tech: ["Spring Framework", "PostgreSQL", "JavaScript", "jQuery", "Zendesk"],
   },
   {
     organization: "아이디어정보기술",
     period: "2025.04 - 2026.01",
+    kind: "work",
     type: "정규직 · 주임",
-    title: "건설업계 종합 플랫폼 풀스택 개발",
+    title: "건설업계 종합 플랫폼 GaiA/CaiROS 풀스택 개발",
     bullets: [
       "퍼사드, 아토믹, 팩토리, 싱글톤 패턴을 활용한 레거시 리팩토링과 공통 모듈화",
       "Server-to-Server API, RESTful API 설계 및 구축, 착공계 문서 관리 핵심 기능 합동 개발",
@@ -30,6 +33,7 @@ export const experiences: ExperienceItem[] = [
   {
     organization: "KH정보교육원",
     period: "2023.06 - 2024.12",
+    kind: "teaching",
     type: "프리랜서 · 전임강사",
     title: "공공데이터 융합 자바개발자 양성과정 강의",
     bullets: [
@@ -41,6 +45,7 @@ export const experiences: ExperienceItem[] = [
   {
     organization: "코리아정보보안IT아카데미",
     period: "2019.11 - 2023.02",
+    kind: "teaching",
     // 2019.11~2020.07은 수강생 1:1 보습, 2020.08부터 프리랜서 전임강사로 근무
     type: "보습강사 → 프리랜서 전임강사",
     title: "풀스택 웹 애플리케이션 개발자 양성과정 강의",

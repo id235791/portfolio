@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
   basePath: BASE_PATH,
   // /projects/duckzip -> /projects/duckzip/index.html 로 생성되어 정적 호스팅에서 경로가 안정적으로 동작한다.
   trailingSlash: true,
+  // 빌드 시각을 코드에 고정해 넣는다. 경력 기간("재직중") 계산의 기준 날짜로 쓰인다(src/lib/career.ts).
+  env: {
+    BUILD_DATE: new Date().toISOString(),
+  },
   images: {
     // 기본 이미지 최적화는 서버가 필요하므로 정적 export에서는 원본 이미지를 그대로 쓴다.
     unoptimized: true,

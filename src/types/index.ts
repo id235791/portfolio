@@ -39,7 +39,10 @@ export interface SkillGroup {
 
 export interface ExperienceItem {
   organization: string;
+  // "YYYY.MM - YYYY.MM" 형식. 현재 다니는 곳은 끝을 "재직중"으로 쓰면 오늘 날짜까지 자동 계산된다.
   period: string;
+  // 경력 합산 구분: 개발 실무(work)와 강의(teaching)를 나눠 보여준다.
+  kind: "work" | "teaching";
   type: string;
   title: string;
   bullets: string[];
