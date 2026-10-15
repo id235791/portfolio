@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { contactLinks, profile } from "@/data/profile";
 import ExternalLinkIcon from "@/components/ui/ExternalLinkIcon";
@@ -80,6 +81,24 @@ export default function Contact() {
               );
             })}
           </ul>
+        </Reveal>
+
+        {/* 지원서 제출용 PDF 페이지로 가는 링크. 각 페이지의 "PDF로 저장" 버튼으로 A4 문서를 받을 수 있다. */}
+        <Reveal delay={0.35}>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3 text-sm">
+            <Link
+              href="/pdf/resume/"
+              className="rounded-full border border-border bg-surface px-4 py-2 transition-colors hover:border-fuchsia-500/50"
+            >
+              이력서 PDF
+            </Link>
+            <Link
+              href="/pdf/portfolio/"
+              className="rounded-full border border-border bg-surface px-4 py-2 transition-colors hover:border-fuchsia-500/50"
+            >
+              프로젝트 포트폴리오 PDF
+            </Link>
+          </div>
         </Reveal>
       </div>
     </section>

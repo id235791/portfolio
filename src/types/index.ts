@@ -87,6 +87,8 @@ export interface Project {
   // 문제-해결 형식에 담기 어려운 주요 구현 목록 (선택). 있으면 상세 페이지에 'Key Work' 섹션으로 표시된다.
   keyWork?: string[];
   challenges: ProblemSolution[];
+  // PDF 문서(/pdf/resume, /pdf/portfolio)에 실을 challenges의 순번(0부터). 지면이 좁아 대표 사례만 고른다. 없으면 앞의 3개를 쓴다.
+  resumeChallenges?: number[];
   results: string[];
   learnings: string[];
   links: ProjectLink[];

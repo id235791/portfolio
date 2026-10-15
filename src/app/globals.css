@@ -99,6 +99,25 @@ body {
   animation: caret-blink 1s step-end infinite;
 }
 
+/*
+  인쇄(PDF 저장) 설정. /pdf/resume, /pdf/portfolio 페이지를 A4 한 장 단위로 찍기 위한 것이다.
+  배경색·강조색이 빠지지 않도록 print-color-adjust를 exact로 둔다.
+*/
+@media print {
+  @page {
+    size: A4;
+    margin: 13mm 14mm;
+  }
+  html,
+  body {
+    background: #fff;
+  }
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
 /* 움직임 줄이기 설정을 켠 사용자에게는 반복 애니메이션을 멈춘다 */
 @media (prefers-reduced-motion: reduce) {
   html {
