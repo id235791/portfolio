@@ -8,7 +8,21 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     category: "Frontend",
-    items: ["React", "Next.js", "TypeScript", "JavaScript", "Vue.js", "React Native (Expo)", "Pebble Template"],
+    // JSP, Thymeleaf, Pebble은 서버에서 HTML을 그리는 템플릿 엔진이다. 국내 Spring 실무에서 많이 쓰여 따로 표기한다.
+    items: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "JavaScript",
+      "Vue.js",
+      "React Native (Expo)",
+      "HTML/CSS",
+      "jQuery",
+      "Ajax",
+      "JSP",
+      "Thymeleaf",
+      "Pebble",
+    ],
   },
   {
     category: "Database & Cloud",
