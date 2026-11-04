@@ -13,9 +13,10 @@ export const experiences: ExperienceItem[] = [
       "38일간 멈춰 있던 스케줄러 장애 원인(HTTP 타임아웃 미설정)을 찾아 전 모듈에 타임아웃 적용",
       "LG전자 Zendesk Private App 고도화: 증상 기반 CallCode 추천으로 상담 입력 UX·조회 로직 변경",
       "기간계 신규 시스템(N-GSFS) 전환 2회 대응: 7월 아시아 8개 법인, 10월 중동·아프리카 11개 법인(73개국)·인도네시아",
+      "운영 중인 AWS Lambda 함수 유지보수: 요구사항에 맞춘 코드 수정과 재배포",
       "일정 기반 자동 전환, 전환 RUNBOOK·점검 스크립트 정리, Claude Code를 활용한 레거시 분석과 유지보수 효율 개선",
     ],
-    tech: ["Spring Boot", "Oracle", "JavaScript", "jQuery", "Zendesk"],
+    tech: ["Spring Boot", "Oracle", "JavaScript", "jQuery", "Zendesk", "AWS Lambda"],
   },
   {
     organization: "아이디어정보기술",
