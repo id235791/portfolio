@@ -38,9 +38,9 @@ export const contactLinks: ContactLink[] = [
 
 // 상단 내비게이션 항목. id는 각 섹션 요소의 id와 일치해야 스크롤 이동/하이라이트가 동작한다.
 export const navItems = [
-  { id: "about", label: "About" },
-  { id: "skills", label: "Skills" },
-  { id: "projects", label: "Projects" },
-  { id: "experience", label: "Experience" },
-  { id: "contact", label: "Contact" },
+  { id: "projects", label: "프로젝트" },
+  { id: "about", label: "소개" },
+  { id: "experience", label: "경력" },
+  { id: "skills", label: "기술" },
+  { id: "contact", label: "연락하기" },
 ] as const;

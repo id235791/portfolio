@@ -7,9 +7,9 @@ import PrintButton from "./PrintButton";
 // 용지 크기와 쪽 여백은 globals.css의 @media print 에서 정한다.
 export default function PrintSheet({ children }: { children: ReactNode }) {
   return (
-    <main className="flex-1 bg-surface-strong py-8 print:flex-none print:bg-transparent print:py-0">
+    <main className="flex-1 bg-paper-2 py-8 print:flex-none print:bg-transparent print:py-0">
       <div className="mx-auto mb-4 flex max-w-[210mm] items-center justify-between gap-3 px-4 print:hidden">
-        <Link href="/" className="text-sm text-muted hover:text-foreground">
+        <Link href="/" className="text-sm text-muted hover:text-ink">
           ← 포트폴리오로 돌아가기
         </Link>
         <div className="flex items-center gap-3">
@@ -19,7 +19,7 @@ export default function PrintSheet({ children }: { children: ReactNode }) {
         </div>
       </div>
 
-      <article className="mx-auto max-w-[210mm] bg-white px-[14mm] py-[14mm] text-[12.5px] leading-[1.6] text-foreground shadow-sm print:max-w-none print:p-0 print:shadow-none">
+      <article className="print-sheet mx-auto max-w-[210mm] bg-print px-[14mm] py-[14mm] text-[12.5px] leading-[1.6] text-ink shadow-sm print:max-w-none print:p-0 print:shadow-none">
         {children}
       </article>
     </main>

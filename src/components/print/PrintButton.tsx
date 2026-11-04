@@ -7,7 +7,7 @@ export default function PrintButton() {
     <button
       type="button"
       onClick={() => window.print()}
-      className="rounded-full bg-foreground px-4 py-2 text-sm font-semibold text-background transition-opacity hover:opacity-85 print:hidden"
+      className="rounded-card bg-ink px-4 py-2 text-sm font-semibold text-paper transition-opacity hover:opacity-85 print:hidden"
     >
       PDF로 저장
     </button>

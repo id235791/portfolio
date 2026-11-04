@@ -7,17 +7,18 @@ import Hero from "@/components/sections/Hero";
 import Projects from "@/components/sections/Projects";
 import Skills from "@/components/sections/Skills";
 
-// 메인 원페이지. 섹션 순서를 바꾸려면 아래 순서와 data/profile.ts의 navItems 순서를 함께 바꾼다.
+// 메인 원페이지. 채용 담당자가 작업부터 보도록 프로젝트를 첫 화면 바로 뒤에 둔다.
+// 섹션 순서를 바꾸려면 아래 순서와 data/profile.ts의 navItems 순서를 함께 바꾼다.
 export default function Home() {
   return (
     <>
       <Header />
       <main className="flex-1">
         <Hero />
-        <About />
-        <Skills />
         <Projects />
+        <About />
         <Experience />
+        <Skills />
         <Contact />
       </main>
       <Footer />

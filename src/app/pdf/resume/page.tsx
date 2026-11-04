@@ -27,7 +27,7 @@ const sumMonths = (kind?: "work" | "teaching") =>
 function Section({ title, aside, children }: { title: string; aside?: ReactNode; children: ReactNode }) {
   return (
     <section className="mt-7">
-      <div className="mb-3 flex items-end justify-between gap-4 border-b-2 border-foreground pb-1.5 [break-after:avoid]">
+      <div className="mb-3 flex items-end justify-between gap-4 border-b-2 border-ink pb-1.5 [break-after:avoid]">
         <h2 className="text-[15px] font-bold tracking-tight">{title}</h2>
         {aside}
       </div>
@@ -38,7 +38,7 @@ function Section({ title, aside, children }: { title: string; aside?: ReactNode;
 
 // 기술 이름 나열. 배지 대신 가벼운 텍스트로 써서 지면을 아낀다.
 function TechLine({ items }: { items: string[] }) {
-  return <p className="mt-1.5 text-[11px] text-muted">{items.join(" · ")}</p>;
+  return <p className="mt-1.5 text-[11px] text-muted">{items.join(", ")}</p>;
 }
 
 export default function ResumePdfPage() {
@@ -56,11 +56,11 @@ export default function ResumePdfPage() {
         {/* 머리말: 이름, 한 줄 소개, 연락처, 사진 */}
         <header className="flex items-start justify-between gap-6">
           <div className="min-w-0">
-            <p className="text-[12px] font-semibold tracking-wide text-fuchsia-600">{profile.role}</p>
-            <h1 className="mt-0.5 text-[28px] leading-tight font-extrabold tracking-tight">
+            <h1 className="text-[28px] leading-tight font-extrabold tracking-tight">
               {profile.name}
               <span className="ml-2 text-[15px] font-medium text-muted">{profile.nameEn}</span>
             </h1>
+            <p className="mt-0.5 text-[12px] font-semibold text-muted">{profile.role}</p>
             <p className="mt-2 text-[14px] font-semibold">{profile.headline}</p>
             <p className="mt-0.5 text-muted">{profile.subline}</p>
             <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-3 gap-y-0.5 text-[12px]">
@@ -96,7 +96,7 @@ export default function ResumePdfPage() {
           {/* 주요 수치. 메인 사이트의 카운트업 카드를 작은 표로 줄였다. */}
           <ul className="mt-3 grid grid-cols-3 gap-1.5 [break-inside:avoid]">
             {profile.highlights.map((item) => (
-              <li key={item.label} className="rounded-md border border-border px-2.5 py-1.5">
+              <li key={item.label} className="rounded-md border border-rule px-2.5 py-1.5">
                 <span className="text-[14px] font-bold">
                   {item.value.toFixed(item.decimals ?? 0)}
                   {item.suffix}
@@ -111,7 +111,7 @@ export default function ResumePdfPage() {
           title="경력"
           aside={
             <p className="text-[11.5px] text-muted">
-              총 <b className="text-foreground">{formatMonths(sumMonths())}</b> (개발 {formatMonths(sumMonths("work"))} ·
+              총 <b className="text-ink">{formatMonths(sumMonths())}</b> (개발 {formatMonths(sumMonths("work"))} ·
               강의 {formatMonths(sumMonths("teaching"))})
             </p>
           }
@@ -145,7 +145,7 @@ export default function ResumePdfPage() {
             {skillGroups.map((group) => (
               <div key={group.category} className="contents">
                 <dt className="font-semibold">{group.category}</dt>
-                <dd className="text-foreground/85">{group.items.join(", ")}</dd>
+                <dd className="text-ink/85">{group.items.join(", ")}</dd>
               </div>
             ))}
           </dl>
@@ -168,9 +168,9 @@ export default function ResumePdfPage() {
               <li key={project.title} className="[break-inside:avoid]">
                 <p>
                   <b>{project.title}</b>
-                  <span className="ml-2 text-[11px] text-muted">{project.tech.join(" · ")}</span>
+                  <span className="ml-2 text-[11px] text-muted">{project.tech.join(", ")}</span>
                 </p>
-                <p className="text-foreground/85">{project.description}</p>
+                <p className="text-ink/85">{project.description}</p>
               </li>
             ))}
           </ul>

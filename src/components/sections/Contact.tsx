@@ -2,11 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
-import { contactLinks, profile } from "@/data/profile";
 import ExternalLinkIcon from "@/components/ui/ExternalLinkIcon";
-import Reveal from "@/components/ui/Reveal";
+import { contactLinks, profile } from "@/data/profile";
 
+// 연락처 섹션. 이메일 복사 버튼, 연락 수단, 지원서용 PDF 링크를 잉크 띠 위에 모았다.
 export default function Contact() {
   const [copied, setCopied] = useState(false);
 
@@ -23,83 +22,55 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="relative scroll-mt-20 overflow-hidden py-28 sm:py-36">
-      <div className="pointer-events-none absolute bottom-0 left-1/2 h-[30rem] w-[50rem] -translate-x-1/2 translate-y-1/2 rounded-full bg-fuchsia-300/30 blur-3xl" />
-
-      <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
-        <Reveal>
-          <p className="mb-3 font-mono text-sm tracking-widest text-fuchsia-600 uppercase">05 / Contact</p>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
-            함께 <span className="text-gradient">일할 이야기</span>를 나눠요
+    <section id="contact" className="band-ink section scroll-mt-20">
+      <div className="wrap grid-12">
+        <div className="lg:col-span-7">
+          <h2>
+            <span className="mark">함께 일할 이야기를 나눠요</span>
           </h2>
-          <p className="mt-5 text-muted">채용, 협업, 프로젝트 제안 모두 환영합니다. 편하게 연락 주세요.</p>
-        </Reveal>
-
-        <Reveal delay={0.15}>
-          <button
-            type="button"
-            onClick={copyEmail}
-            className="group relative mt-10 inline-flex items-center gap-3 rounded-full border border-border bg-surface px-6 py-4 font-mono text-sm transition-colors hover:border-fuchsia-500/50 sm:text-base"
-          >
+          <p className="lead mt-5 text-on-ink">채용, 협업, 프로젝트 제안 모두 환영합니다. 편하게 연락 주세요.</p>
+          <button type="button" onClick={copyEmail} className="btn mt-8">
             {profile.email}
-            <span className="relative inline-flex h-6 min-w-14 items-center justify-center overflow-hidden rounded-full bg-foreground/10 px-2 text-xs">
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.span
-                  key={copied ? "copied" : "copy"}
-                  initial={{ y: 12, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -12, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className={copied ? "text-emerald-600" : "text-muted"}
-                >
-                  {copied ? "복사됨" : "복사"}
-                </motion.span>
-              </AnimatePresence>
+            {/* 복사 결과를 스크린 리더에도 알리기 위해 aria-live를 둔다 */}
+            <span aria-live="polite" className="min-w-10 text-sm text-on-ink">
+              {copied ? "복사됨" : "복사"}
             </span>
           </button>
-        </Reveal>
+        </div>
 
-        <Reveal delay={0.25}>
-          <ul className="mt-10 grid gap-3 sm:grid-cols-3">
+        <div className="lg:col-span-5">
+          <ul className="border-t border-on-ink">
             {contactLinks.map((link) => {
               const external = link.href.startsWith("http");
               return (
-                <li key={link.label}>
+                <li key={link.label} className="border-b border-ink-2">
                   <a
                     href={link.href}
                     target={external ? "_blank" : undefined}
                     rel={external ? "noopener noreferrer" : undefined}
-                    className="group flex h-full flex-col items-center gap-1 rounded-2xl border border-border bg-surface/60 px-4 py-5 transition-all hover:-translate-y-1 hover:border-foreground/20"
+                    className="group flex min-h-14 items-center justify-between gap-4"
                   >
-                    <span className="inline-flex items-center gap-1 font-mono text-xs text-muted uppercase">
-                      {link.label}
+                    <span className="text-sm text-on-ink">{link.label}</span>
+                    <span className="inline-flex items-center gap-1 underline decoration-muted underline-offset-[0.2em] transition-colors group-hover:decoration-accent">
+                      {link.value}
                       {external && <ExternalLinkIcon className="h-3 w-3" />}
                     </span>
-                    <span className="text-sm break-all">{link.value}</span>
                   </a>
                 </li>
               );
             })}
           </ul>
-        </Reveal>
 
-        {/* 지원서 제출용 PDF 페이지로 가는 링크. 각 페이지의 "PDF로 저장" 버튼으로 A4 문서를 받을 수 있다. */}
-        <Reveal delay={0.35}>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3 text-sm">
-            <Link
-              href="/pdf/resume/"
-              className="rounded-full border border-border bg-surface px-4 py-2 transition-colors hover:border-fuchsia-500/50"
-            >
+          {/* 지원서 제출용 PDF 페이지로 가는 링크. 각 페이지의 "PDF로 저장" 버튼으로 A4 문서를 받을 수 있다. */}
+          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            <Link href="/pdf/resume/" className="link">
               이력서 PDF
             </Link>
-            <Link
-              href="/pdf/portfolio/"
-              className="rounded-full border border-border bg-surface px-4 py-2 transition-colors hover:border-fuchsia-500/50"
-            >
+            <Link href="/pdf/portfolio/" className="link">
               프로젝트 포트폴리오 PDF
             </Link>
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );

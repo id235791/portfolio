@@ -25,8 +25,8 @@ export default function PortfolioPdfPage() {
   return (
     <PrintSheet>
       {/* 머리말: 문서 제목, 이름, 연락처. 첫 쪽에만 나온다. */}
-      <header className="border-b-2 border-foreground pb-3">
-        <p className="text-[12px] font-semibold tracking-wide text-fuchsia-600">프로젝트 포트폴리오</p>
+      <header className="border-b-2 border-ink pb-3">
+        <p className="text-[12px] font-semibold tracking-wide text-muted">프로젝트 포트폴리오</p>
         <div className="mt-0.5 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
           <h1 className="text-[24px] leading-tight font-extrabold tracking-tight">
             {profile.name}
@@ -35,7 +35,7 @@ export default function PortfolioPdfPage() {
           <p className="text-[11.5px] text-muted">
             {contacts.map((item, i) => (
               <span key={item.href}>
-                {i > 0 && " · "}
+                {i > 0 && ", "}
                 <a href={item.href} className="hover:underline">
                   {item.value}
                 </a>

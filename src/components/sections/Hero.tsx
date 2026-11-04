@@ -1,138 +1,75 @@
-"use client";
-
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import Image from "next/image";
+import { withBasePath } from "@/config/site";
 import { profile } from "@/data/profile";
 
-// 헤드라인 중 그라데이션으로 강조할 앞부분. profile.headline이 이 문구로 시작해야 한다.
-const HIGHLIGHT = "설명할 수 있는 코드";
-
-// 첫 화면(히어로).
-// 헤드라인은 글자 단위로 한 글자씩 나타나 타이핑하는 듯한 효과를 준다.
-// 글자를 처음부터 HTML에 모두 렌더링하고 투명도만 조절하므로, 검색엔진과 JS가 꺼진 환경에서도 문구가 보인다.
+// 첫 화면(히어로). 서버에서 완성된 HTML로 내려가므로 JS가 꺼진 환경에서도 내용이 모두 보인다.
+// 헤드라인 아래의 오렌지 치수선과 주석이 이 사이트의 시그니처다. "설명하는 사람"이라는 정체성을
+// 강의 판서처럼 문장에 직접 주석을 다는 방식으로 보여 준다.
 export default function Hero() {
-  // 마우스를 따라다니는 배경 조명 위치
-  const mouseX = useMotionValue(-1000);
-  const mouseY = useMotionValue(-1000);
-  const spotlight = useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(168,85,247,0.1), transparent 70%)`;
-
-  function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
-    const rect = e.currentTarget.getBoundingClientRect();
-    mouseX.set(e.clientX - rect.left);
-    mouseY.set(e.clientY - rect.top);
-  }
-
-  const rest = profile.headline.slice(HIGHLIGHT.length);
-  const chars = [
-    ...Array.from(HIGHLIGHT).map((char) => ({ char, highlight: true })),
-    ...Array.from(rest).map((char) => ({ char, highlight: false })),
-  ];
-  // 한 글자당 등장 간격(초). 타이핑이 끝나는 시점에 서브 문구가 나오도록 계산에 사용한다.
-  const charDelay = 0.06;
-  const typingEnd = 0.3 + chars.length * charDelay;
+  // profile.headline을 어절로 나눠 "설명할 수 있는" / "코드를" / "만듭니다."에 각각 배치한다.
+  // 헤드라인을 다른 문구로 바꾸면 이 분할과 아래 주석 내용도 함께 검토해야 한다.
+  const words = profile.headline.split(" ");
+  const explain = words.slice(0, 3).join(" ");
+  const code = words[3];
+  const rest = words.slice(4).join(" ");
 
   return (
-    <section
-      onMouseMove={handleMouseMove}
-      className="relative flex min-h-svh items-center overflow-hidden pt-16"
-    >
-      {/* 배경 레이어: 격자 + 떠다니는 빛 덩어리 + 마우스 조명 */}
-      <div className="bg-grid pointer-events-none absolute inset-0" />
-      <div className="animate-blob pointer-events-none absolute -top-40 -left-32 h-[28rem] w-[28rem] rounded-full bg-violet-300/40 blur-3xl" />
-      <div
-        className="animate-blob pointer-events-none absolute top-1/3 -right-40 h-[26rem] w-[26rem] rounded-full bg-fuchsia-300/30 blur-3xl"
-        style={{ animationDelay: "-6s" }}
-      />
-      <div
-        className="animate-blob pointer-events-none absolute -bottom-40 left-1/3 h-[24rem] w-[24rem] rounded-full bg-cyan-300/30 blur-3xl"
-        style={{ animationDelay: "-12s" }}
-      />
-      <motion.div className="pointer-events-none absolute inset-0" style={{ background: spotlight }} />
-
-      <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6">
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-foreground/[0.03] px-4 py-1.5 font-mono text-xs text-muted"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+    <section className="relative overflow-clip">
+      <div className="proof pointer-events-none absolute inset-0" />
+      <div className="wrap relative pt-(--space-2xl)">
+        {/* 문장이 끊기지 않게 화면 폭을 채우는 한 줄로 둔다. 좁은 화면에서는 어절 단위로 줄바꿈된다 */}
+        <h1 className="max-w-none text-[clamp(2.25rem,5.9vw,5.4rem)] leading-[1.1]">
+          {/* 주석은 보조 정보다. 같은 사실이 아래 문장에 있으므로 스크린 리더에서는 건너뛴다 */}
+          <span className="note mr-[0.28em]">
+            {explain}
+            <span className="note-mark" aria-hidden="true">
+              <span className="note-line" />
+              <span className="note-text">강의 4년</span>
+            </span>
           </span>
-          {profile.role} · {profile.nameEn}
-        </motion.p>
-
-        <h1 className="text-4xl leading-tight font-extrabold tracking-tight sm:text-6xl lg:text-7xl">
-          {/* 강조 구간은 바깥 span 하나에 그라데이션을 걸어 글자 사이에서 색이 끊기지 않게 한다 */}
-          <span className="text-gradient">
-            {chars.filter((c) => c.highlight).map(({ char }, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 + i * charDelay, duration: 0.01 }}
-              >
-                {char}
-              </motion.span>
-            ))}
+          <span className="note mr-[0.28em]">
+            {code}
+            <span className="note-mark" aria-hidden="true">
+              <span className="note-line" />
+              <span className="note-text">풀스택 개발</span>
+            </span>
           </span>
-          {chars.filter((c) => !c.highlight).map(({ char }, i) => (
-            <motion.span
-              key={i}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 + (HIGHLIGHT.length + i) * charDelay, duration: 0.01 }}
-            >
-              {char}
-            </motion.span>
-          ))}
-          <span className="animate-caret ml-1 inline-block h-[0.9em] w-[3px] translate-y-[0.1em] bg-fuchsia-400" />
+          <span className="inline-block">{rest}</span>
         </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: typingEnd, duration: 0.7 }}
-          className="mt-8 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl"
-        >
-          {profile.subline}
-        </motion.p>
+        <div className="grid-12 mt-(--space-lg) items-start">
+          <div className="lg:col-span-7">
+            <p className="lead text-ink-2">{profile.subline}</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a href="#projects" className="btn btn--primary">
+                프로젝트 보기
+              </a>
+              <a href="#contact" className="btn">
+                연락하기
+              </a>
+            </div>
+          </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: typingEnd + 0.2, duration: 0.7 }}
-          className="mt-10 flex flex-wrap gap-3"
-        >
-          <a
-            href="#projects"
-            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-500 via-fuchsia-500 to-pink-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-fuchsia-500/25 transition-transform hover:scale-[1.03]"
-          >
-            프로젝트 보기
-            <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
-          </a>
-          <a
-            href="#contact"
-            className="inline-flex items-center rounded-full border border-border bg-foreground/[0.03] px-6 py-3 text-sm font-semibold transition-colors hover:bg-foreground/[0.08]"
-          >
-            연락하기
-          </a>
-        </motion.div>
+          {/* 프로필 사진. 원본 해상도가 낮아 300px까지만 키운다. 파일은 public/images/profile.jpg 를 덮어쓰면 된다 */}
+          <figure className="crop m-3 w-[calc(100%-24px)] max-w-[300px] lg:col-span-4 lg:col-start-9 lg:justify-self-end">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-card bg-paper-2">
+              {/* 사진이 없으면 이름을 대신 보여 준다 */}
+              {profile.photo ? (
+                <Image
+                  src={withBasePath(profile.photo)}
+                  alt={`${profile.name} 프로필 사진`}
+                  fill
+                  priority
+                  className="object-cover"
+                  sizes="300px"
+                />
+              ) : (
+                <p className="flex h-full items-center justify-center font-display text-3xl">{profile.name}</p>
+              )}
+            </div>
+          </figure>
+        </div>
       </div>
-
-      {/* 아래로 스크롤 유도 표시 */}
-      <motion.a
-        href="#about"
-        aria-label="아래로 스크롤"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 8, 0] }}
-        transition={{ opacity: { delay: typingEnd + 0.6 }, y: { repeat: Infinity, duration: 2 } }}
-        className="absolute bottom-8 left-1/2 -ml-3 text-muted"
-      >
-        <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-          <path d="M12 5v14m0 0-6-6m6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </motion.a>
     </section>
   );
 }

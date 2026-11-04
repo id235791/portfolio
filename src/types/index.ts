@@ -81,14 +81,14 @@ export interface Project {
   role: string;
   contribution: string;
   tech: string[];
-  // 카드 배경 그라데이션 색 (Tailwind 클래스)
-  accent: string;
   background: string;
   // 문제-해결 형식에 담기 어려운 주요 구현 목록 (선택). 있으면 상세 페이지에 'Key Work' 섹션으로 표시된다.
   keyWork?: string[];
   challenges: ProblemSolution[];
   // PDF 문서(/pdf/resume, /pdf/portfolio)에 실을 challenges의 순번(0부터). 지면이 좁아 대표 사례만 고른다. 없으면 앞의 3개를 쓴다.
   resumeChallenges?: number[];
+  // 이력서(/pdf/resume)에 실을 results의 순번(0부터). 없으면 전부 싣는다. 포트폴리오 PDF와 웹에는 항상 전부 나온다.
+  resumeResults?: number[];
   results: string[];
   learnings: string[];
   links: ProjectLink[];

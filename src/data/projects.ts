@@ -23,7 +23,6 @@ export const projects: Project[] = [
       "Jenkins",
       "Ubi-Report",
     ],
-    accent: "from-violet-500 via-fuchsia-500 to-pink-500",
     background:
       "건설업계 종합 플랫폼 GaiA/CaiROS는 발주처, 시공사, 협력사 등 여러 이해관계자가 함께 쓰는 대규모 서비스로, 안정성과 유지보수성이 무엇보다 중요했습니다. 애자일 방식으로 진행되는 프로젝트에서 공통 개발 팀의 일원으로 환경 세팅부터 핵심 기능, API 설계, 레거시 개선, 배포 자동화까지 전 범위를 맡았습니다.",
     keyWork: [
@@ -79,7 +78,6 @@ export const projects: Project[] = [
     role: "유지보수 · 연동 설계 및 개발",
     contribution: "100%",
     tech: ["JavaScript", "jQuery", "Vue.js", "Zendesk Apps Framework", "Zendesk Custom Objects API", "Claude Code"],
-    accent: "from-cyan-400 via-sky-500 to-indigo-500",
     // 아래 내용의 근거는 GSFS-app 저장소의 커밋 이력, README 변경 이력, docs/ngsfs-migration/RUNBOOK.md 이다.
     // 작업은 (1) 증상 기반 CallCode 추천 (2) 7월 N-GSFS 전환 (3) 10월 N-GSFS 전환 세 단계로 진행됐다.
     // 고객사 내부 서버 주소와 코드값은 공개하지 않는다.
@@ -88,6 +86,7 @@ export const projects: Project[] = [
     keyWork: [
       "[증상 기반 추천] CallCode 조회 순서를 '제품 선택 후'에서 '증상 선택 후'로 변경하고 연관 CallCode 상위 3개 자동 추천, 전체 목록을 보는 [ALL] 버튼 추가",
       "[증상 기반 추천] Zendesk Sunshine Objects API(구버전)를 Custom Objects API로 전면 전환, 증상-CallCode 매핑 데이터 일괄 생성 함수",
+      "[조회 성능] 드롭다운 값을 바꿀 때마다 반복되던 GSFS 조회에 캐싱을 적용해 통신량과 응답 속도 개선",
       "[7월 전환] 국가코드 기준 기존 GSFS / N-GSFS 서버 라우팅과 셧다운 기간 임시저장 처리로 법인별 순차 전환 지원",
       "[10월 전환] 유럽(EIC) 리전 추가에 맞춘 리전별 서버 라우팅 구조 개편",
       "[10월 전환] 수동 셧다운 상수를 일정표 기반 자동 전환(셧다운 전 / 중 / 오픈 후 3단계)으로 교체",
@@ -107,6 +106,12 @@ export const projects: Project[] = [
           "앱이 쓰던 Zendesk Sunshine Objects API가 구버전이었고, 조회를 다시 할 때마다 코드 목록이 초기화되지 않고 누적되는 버그가 있었습니다.",
         solution:
           "엔드포인트를 Custom Objects API로 전면 교체하고 조회 결과를 클라이언트에서 필터링하도록 바꿨으며, 재호출 시 목록을 초기화해 누적 버그를 고쳤습니다.",
+      },
+      {
+        problem:
+          "조회 결과를 캐싱하지 않아 드롭다운에서 새 값을 선택할 때마다 타 시스템인 GSFS를 매번 다시 조회해야 했고, 그만큼 통신량이 늘고 화면 응답도 느려졌습니다.",
+        solution:
+          "조회 결과에 캐싱을 적용해 불필요한 GSFS 재조회를 줄이고, 통신량과 드롭다운 응답 속도를 개선했습니다.",
       },
       {
         problem:
@@ -140,9 +145,12 @@ export const projects: Project[] = [
       },
     ],
     // 이력서에는 증상 기반 추천, 일정표 기반 자동 전환, 누락 10개국 사례를 싣는다.
-    resumeChallenges: [0, 3, 5],
+    resumeChallenges: [0, 4, 6],
+    // 캐싱 개선(1번)은 이력서 4쪽 분량을 넘기므로 웹과 포트폴리오 PDF에만 싣는다.
+    resumeResults: [0, 2, 3, 4],
     results: [
       "증상 기반 추천으로 상담원이 긴 CallCode 목록에서 찾던 과정을 상위 3개 선택으로 단축",
+      "드롭다운 선택마다 반복되던 GSFS 조회를 캐싱으로 줄여 통신량과 응답 속도 개선",
       "2026.07 아시아 8개 법인 N-GSFS 전환 대응",
       "2026.10 중동·아프리카 11개 법인(73개국)과 인도네시아 전환을, 당일 일정 변경에도 대응하며 완료",
       "7월 전환에서 누락됐던 10개국을 찾아 반영하고, 다음 담당자가 그대로 따라 할 수 있는 RUNBOOK과 점검 스크립트 정리",
@@ -165,7 +173,6 @@ export const projects: Project[] = [
     role: "백엔드 개발",
     contribution: "100%",
     tech: ["Java", "Spring Boot", "JdbcTemplate", "Oracle", "Tomcat", "Logback", "Claude Code"],
-    accent: "from-emerald-400 via-teal-500 to-cyan-600",
     // 아래 내용의 근거는 shinsegaeInternational 저장소의 본인 커밋(2026.04.10 이후), 개발명세서, DB설계서, TOKEN.md 이다.
     // 기존 담당자가 만든 모듈 구조와, Private App(memberInformation) 관련 변경은 본인 작업에서 제외했다.
     background:
@@ -255,7 +262,6 @@ export const projects: Project[] = [
       "Gemini API",
       "Claude Code",
     ],
-    accent: "from-amber-400 via-orange-500 to-rose-500",
     background:
       "duckzip(덕집)은 좋아하는 작품과 캐릭터를 중심으로 모이는 팬 커뮤니티입니다. 작품 게시판, 캐릭터 투표, 이상형 월드컵, 굿즈·콜라보 일정, 1:1 상담 채팅 등을 제공합니다. 4명이 함께 개발하는 프로젝트에서 PM을 맡아 저장소와 모노레포 구조를 처음 만드는 것부터 환경별 인프라, 배포 파이프라인, 팀 협업 자동화, 모든 API가 거쳐 가는 공통 기반까지 개발 환경 전체를 직접 구축했습니다.",
     keyWork: [

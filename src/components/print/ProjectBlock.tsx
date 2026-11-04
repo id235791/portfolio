@@ -18,6 +18,11 @@ export default function ProjectBlock({ project, compact = false }: { project: Pr
   const picked = (project.resumeChallenges ?? [0, 1, 2])
     .map((index) => project.challenges[index])
     .filter(Boolean);
+  // 이력서(compact)는 지면이 빠듯해 resumeResults로 고른 성과만 싣는다
+  const results =
+    compact && project.resumeResults
+      ? project.resumeResults.map((index) => project.results[index]).filter(Boolean)
+      : project.results;
 
   return (
     <>
@@ -28,22 +33,22 @@ export default function ProjectBlock({ project, compact = false }: { project: Pr
           <p className="text-[11.5px] text-muted">{project.period}</p>
         </div>
         <p className="text-[11.5px] text-muted">
-          {project.organization} · {project.role} · 기여도 {project.contribution}
+          {project.organization}, {project.role}, 기여도 {project.contribution}
         </p>
         <p className="mt-1.5">{project.summary}</p>
-        <p className="mt-1.5 text-[11px] text-muted">{project.tech.join(" · ")}</p>
+        <p className="mt-1.5 text-[11px] text-muted">{project.tech.join(", ")}</p>
       </div>
 
       <SubTitle compact={compact}>주요 문제 해결</SubTitle>
       <ol className={`mt-1 ${compact ? "space-y-1.5" : "space-y-2"}`}>
         {picked.map((item) => (
-          <li key={item.problem} className="border-l-2 border-fuchsia-500/40 pl-2.5 [break-inside:avoid]">
+          <li key={item.problem} className="border-l-2 border-rule pl-2.5 [break-inside:avoid]">
             <p className="text-muted">
-              <b className="mr-1 text-rose-600">문제</b>
+              <b className="mr-1 text-ink">문제</b>
               {item.problem}
             </p>
             <p>
-              <b className="mr-1 text-emerald-600">해결</b>
+              <b className="mr-1 text-ink">해결</b>
               {item.solution}
             </p>
           </li>
@@ -53,7 +58,7 @@ export default function ProjectBlock({ project, compact = false }: { project: Pr
       <div className="[break-inside:avoid]">
         <SubTitle compact={compact}>성과</SubTitle>
         <ul className="mt-0.5 list-disc space-y-0.5 pl-4 marker:text-muted">
-          {project.results.map((result) => (
+          {results.map((result) => (
             <li key={result}>{result}</li>
           ))}
         </ul>
@@ -61,7 +66,7 @@ export default function ProjectBlock({ project, compact = false }: { project: Pr
           상세: {shortUrl(SITE_URL)}/projects/{project.slug}/
           {project.links.map((link) => (
             <span key={link.href}>
-              {" · "}
+              {", "}
               {link.label}: {shortUrl(link.href)}
             </span>
           ))}

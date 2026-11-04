@@ -1,60 +1,67 @@
-import { projects, sideProjects } from "@/data/projects";
+import Link from "next/link";
 import ExternalLinkIcon from "@/components/ui/ExternalLinkIcon";
-import ProjectCard from "@/components/ui/ProjectCard";
-import Reveal from "@/components/ui/Reveal";
 import SectionTitle from "@/components/ui/SectionTitle";
-import TechBadge from "@/components/ui/TechBadge";
+import { projects, sideProjects } from "@/data/projects";
 
+// 프로젝트 목록. 사이트의 중심 내용이라 첫 화면 바로 뒤에 둔다.
+// 대표 프로젝트는 행 전체가 상세 페이지 링크이고, 기타 프로젝트는 외부 링크만 있다.
 export default function Projects() {
   return (
-    <section id="projects" className="relative scroll-mt-20 py-28 sm:py-36">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+    <section id="projects" className="scroll-mt-20 pt-(--section-gap-s) pb-(--section-gap)">
+      <div className="wrap">
         <SectionTitle
-          eyebrow="03 / Projects"
           title="문제를 풀어 온 기록"
-          description="카드를 누르면 어떤 문제를 만났고 어떻게 해결했는지 자세히 볼 수 있습니다."
+          description="행을 누르면 어떤 문제를 만났고 어떻게 해결했는지 자세히 볼 수 있습니다."
         />
 
-        {/* 대표 프로젝트: 상세 페이지가 있는 카드. 4개라서 2열(2x2)로 배치한다 */}
-        <div className="grid gap-6 md:grid-cols-2">
-          {projects.map((project, i) => (
-            <ProjectCard key={project.slug} project={project} index={i} />
+        <ul className="set">
+          {projects.map((project) => (
+            <li key={project.slug}>
+              <Link href={`/projects/${project.slug}/`} className="index-row grid-12 py-8 text-ink">
+                {/* 기간과 소속은 줄을 나눠 표기한다 */}
+                <div className="text-sm text-muted lg:col-span-3">
+                  <p className="num font-medium text-ink">{project.period}</p>
+                  <p className="mt-1">{project.organization}</p>
+                </div>
+                <div className="lg:col-span-6">
+                  <h3 className="index-title">{project.title}</h3>
+                  <p className="mt-3 text-ink-2">{project.summary}</p>
+                </div>
+                <div className="text-sm text-muted lg:col-span-3">
+                  <p>{project.tech.slice(0, 5).join(", ")}</p>
+                  <p className="mt-3 font-medium text-accent-text underline underline-offset-[0.2em]">자세히 보기</p>
+                </div>
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
 
-        {/* 기타 프로젝트: 외부 링크만 있는 작은 카드 */}
-        <Reveal className="mt-20">
-          <h3 className="mb-6 font-mono text-sm tracking-widest text-muted uppercase">Other Projects</h3>
-        </Reveal>
-        <div className="grid gap-5 md:grid-cols-2">
-          {sideProjects.map((project, i) => (
-            <Reveal key={project.title} delay={i * 0.1} className="h-full">
-              <div className="flex h-full flex-col rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-foreground/20">
-                <h4 className="text-lg font-semibold">{project.title}</h4>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{project.description}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {project.tech.map((t) => (
-                    <TechBadge key={t} name={t} />
-                  ))}
-                </div>
-                <div className="mt-5 flex gap-4">
-                  {project.links.map((link) => (
-                    <a
-                      key={link.href}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-sm text-cyan-700 hover:text-cyan-800"
-                    >
-                      {link.label}
-                      <ExternalLinkIcon />
-                    </a>
-                  ))}
-                </div>
+        <h3 className="mt-(--space-2xl) mb-6">기타 프로젝트</h3>
+        <ul className="set">
+          {sideProjects.map((project) => (
+            <li key={project.title} className="grid-12 py-6">
+              <h4 className="font-display text-xl lg:col-span-3">{project.title}</h4>
+              <div className="lg:col-span-6">
+                <p className="text-ink-2">{project.description}</p>
+                <p className="mt-2 text-sm text-muted">{project.tech.join(", ")}</p>
               </div>
-            </Reveal>
+              <div className="flex flex-wrap gap-4 text-sm lg:col-span-3">
+                {project.links.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link inline-flex items-center gap-1"
+                  >
+                    {link.label}
+                    <ExternalLinkIcon />
+                  </a>
+                ))}
+              </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
