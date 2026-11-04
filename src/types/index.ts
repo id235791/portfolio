@@ -64,6 +64,8 @@ export interface CertificationItem {
 export interface ProjectLink {
   label: string;
   href: string;
+  // PDF에 글자로 찍을 주소. 한글 도메인처럼 href가 읽기 어려운 경우에만 쓴다.
+  display?: string;
 }
 
 // 상세 페이지의 "문제 -> 해결" 한 묶음
@@ -99,4 +101,6 @@ export interface SideProject {
   description: string;
   tech: string[];
   links: ProjectLink[];
+  // 프로젝트 포트폴리오 PDF(/pdf/portfolio)에도 실을지 여부. 없으면 싣지 않는다.
+  inPortfolioPdf?: boolean;
 }

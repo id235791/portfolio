@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { SITE_URL } from "@/config/site";
 import { profile } from "@/data/profile";
-import { projects } from "@/data/projects";
+import { projects, sideProjects } from "@/data/projects";
 import PrintSheet, { shortUrl } from "@/components/print/PrintSheet";
 import ProjectBlock from "@/components/print/ProjectBlock";
 
 // 지원서에 첨부할 "프로젝트 포트폴리오" PDF 페이지(/pdf/portfolio).
-// 경력·학력·기술 스택은 이력서에 따로 있으므로, 이 문서에는 대표 프로젝트만 프로젝트당 한 쪽씩 싣는다.
+// 경력·학력·기술 스택은 이력서에 따로 있으므로, 이 문서에는 대표 프로젝트를 프로젝트당 한 쪽씩 싣고,
+// 기타 프로젝트 중 inPortfolioPdf로 고른 것만 마지막에 짧게 덧붙인다.
 // 이력서 전체 PDF는 /pdf/resume, 프로젝트를 뺀 이력서 PDF는 /pdf/career 에 있다.
 export const metadata: Metadata = {
   title: "프로젝트 포트폴리오",
@@ -51,6 +52,31 @@ export default function PortfolioPdfPage() {
           <ProjectBlock project={project} />
         </section>
       ))}
+
+      {/* 상세 페이지가 없는 프로젝트라 쪽을 넘기지 않고 마지막 프로젝트 아래에 이어서 싣는다. */}
+      <section className="mt-8 [break-inside:avoid]">
+        <h2 className="mb-3 border-b-2 border-ink pb-1.5 text-[15px] font-bold tracking-tight">기타 프로젝트</h2>
+        <ul className="space-y-2">
+          {sideProjects
+            .filter((project) => project.inPortfolioPdf)
+            .map((project) => (
+              <li key={project.title}>
+                <p>
+                  <b>{project.title}</b>
+                  <span className="ml-2 text-[11px] text-muted">{project.tech.join(", ")}</span>
+                </p>
+                <p className="text-ink/85">{project.description}</p>
+                <p className="text-[11px] text-muted">
+                  {project.links.map((link) => (
+                    <a key={link.href} href={link.href} className="hover:underline">
+                      {link.label}: {link.display ?? shortUrl(link.href)}
+                    </a>
+                  ))}
+                </p>
+              </li>
+            ))}
+        </ul>
+      </section>
     </PrintSheet>
   );
 }

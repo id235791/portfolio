@@ -350,7 +350,14 @@ export const sideProjects: SideProject[] = [
     description:
       "TypeScript 기반 Next.js 웹/앱 개발과 유지보수, 기능 확장을 맡아 실제 운영 중인 서비스입니다.",
     tech: ["Next.js", "TypeScript", "Supabase", "Vercel"],
-    links: [{ label: "서비스", href: "https://xn--vb0b7fa6it7s7x3cpdav29f.com/home" }],
+    links: [
+      {
+        label: "서비스",
+        href: "https://xn--vb0b7fa6it7s7x3cpdav29f.com/home",
+        display: "과천교회청년교구.com/home",
+      },
+    ],
+    inPortfolioPdf: true,
   },
   {
     title: "강의 자료 저장소",
