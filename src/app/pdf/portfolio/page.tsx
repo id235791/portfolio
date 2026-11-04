@@ -7,7 +7,7 @@ import ProjectBlock from "@/components/print/ProjectBlock";
 
 // 지원서에 첨부할 "프로젝트 포트폴리오" PDF 페이지(/pdf/portfolio).
 // 경력·학력·기술 스택은 이력서에 따로 있으므로, 이 문서에는 대표 프로젝트만 프로젝트당 한 쪽씩 싣는다.
-// 이력서 전체 PDF는 /pdf/resume 에 있다.
+// 이력서 전체 PDF는 /pdf/resume, 프로젝트를 뺀 이력서 PDF는 /pdf/career 에 있다.
 export const metadata: Metadata = {
   title: "프로젝트 포트폴리오",
   description: `${profile.name} 프로젝트 포트폴리오 (PDF 저장용)`,

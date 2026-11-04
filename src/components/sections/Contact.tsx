@@ -64,6 +64,9 @@ export default function Contact() {
           {/* 지원서 제출용 PDF 페이지로 가는 링크. 각 페이지의 "PDF로 저장" 버튼으로 A4 문서를 받을 수 있다. */}
           <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm">
             <Link href="/pdf/resume/" className="link">
+              이력서 전체 PDF
+            </Link>
+            <Link href="/pdf/career/" className="link">
               이력서 PDF
             </Link>
             <Link href="/pdf/portfolio/" className="link">

@@ -266,7 +266,7 @@ body {
 }
 
 /*
-  인쇄(PDF 저장) 설정. /pdf/resume, /pdf/portfolio 페이지를 A4 한 장 단위로 찍기 위한 것이다.
+  인쇄(PDF 저장) 설정. /pdf/resume, /pdf/career, /pdf/portfolio 페이지를 A4 한 장 단위로 찍기 위한 것이다.
   배경색이 빠지지 않도록 print-color-adjust를 exact로 둔다.
 */
 @media print {

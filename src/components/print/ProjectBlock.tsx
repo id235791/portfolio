@@ -11,7 +11,7 @@ function SubTitle({ children, compact }: { children: string; compact?: boolean }
   );
 }
 
-// PDF 문서에 들어가는 프로젝트 한 건. 이력서(/pdf/resume)와 포트폴리오(/pdf/portfolio)가 함께 쓴다.
+// PDF 문서에 들어가는 프로젝트 한 건. 이력서 전체(/pdf/resume)와 포트폴리오(/pdf/portfolio)가 함께 쓴다.
 // 지면에 맞춰 resumeChallenges로 고른 대표 문제·해결만 싣고, 전체 내용은 웹 상세 페이지 주소로 안내한다.
 // compact: 이력서처럼 다른 섹션과 함께 실려 지면이 빠듯할 때 제목과 간격을 줄인다.
 export default function ProjectBlock({ project, compact = false }: { project: Project; compact?: boolean }) {

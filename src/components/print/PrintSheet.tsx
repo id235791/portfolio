@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import PrintButton from "./PrintButton";
 
-// PDF 저장용 페이지(/pdf/resume, /pdf/portfolio)의 공통 틀.
+// PDF 저장용 페이지(/pdf/resume, /pdf/career, /pdf/portfolio)의 공통 틀.
 // 화면에서는 회색 바탕 위에 A4 폭(210mm)의 흰 종이처럼 보이게 하고, 인쇄할 때는 종이 장식과 상단 버튼을 모두 걷어낸다.
 // 용지 크기와 쪽 여백은 globals.css의 @media print 에서 정한다.
 export default function PrintSheet({ children }: { children: ReactNode }) {
